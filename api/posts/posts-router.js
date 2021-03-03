@@ -61,7 +61,14 @@ router.put('/:id', (req, res) => {
 //Delete Post
 router.delete('/:id', (req, res) => {
     const id = req.params.id
-    res.status(200).json({message: `Deleting Post with the id of ${ id }`})
+    const currentPostIndex = posts.findIndex(post => post.id === Number(id))
+    if (currentPostIndex) {
+        const removed = posts.splice(currentPostIndex, 1)
+        res.status(200).json({message: `Deleting Post with the id of ${ id }: Removed`, removed})
+    } else {
+        res.status(500).json({ message: 'Error deleting the post'})
+    }
+    
 });
 
 
