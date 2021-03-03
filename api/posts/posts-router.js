@@ -13,7 +13,13 @@ router.get('/', (req, res) => {
   //Post By id
 router.get('/:id', (req, res) => {
     const id = req.params.id
-    res.status(200).json({message: `Getting Post with the id of ${id} `})
+    const foundPost = posts.find(post => post.id === Number(id))
+    if(foundPost){
+        res.status(200).json({message: `Getting Post with the id of ${id} `, posts: foundPost})
+    } else {
+        res.status(404).json({ message: 'That post could not be found' });
+    }
+    
 });
 
 //Add Post
