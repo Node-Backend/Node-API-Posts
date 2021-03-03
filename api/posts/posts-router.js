@@ -1,11 +1,12 @@
 const express = require('express');
 
-const Posts = require('./posts-router.js');
+const posts = require('../../data/posts.js');
 
 const router = express.Router();
 
+
 router.get('/', (req, res) => {
-      res.status(200).json({message: "Getting Posts"})
+      res.status(200).json({message: "Getting Posts", posts: posts})
   });
 
 
