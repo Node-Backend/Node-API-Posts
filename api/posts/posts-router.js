@@ -41,8 +41,20 @@ router.post('/', (req, res) => {
 
 //Update Post
 router.put('/:id', (req, res) => {
-    const id = req.params.id
-    res.status(200).json({message: `Updating Post with the id of ${ id }`})
+    const id = req.params.id;
+    const foundPost = posts.find(post => post.id === Number(id))
+    const { title, content } = req.body;
+    const updatedPost = {id: Number(id), title, content}
+    if (!updatedPost.title || !updatedPost.content) {
+        res.status(404).json({message: "Title and Contenet required"})
+    } else if (updatedPost.title && updatedPost.content && foundPost){
+        const currentPostIndex = posts.findIndex(post => post.id === Number(id))
+        posts[currentPostIndex] = updatedPost
+        res.status(200).json({message: `Updating Post with the id of ${ id }`, updatedPost})
+    } else {
+        res.status(500).json({ message: 'Error updating the post'})
+    }
+    
 });
 
 
