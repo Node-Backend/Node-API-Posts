@@ -24,7 +24,18 @@ router.get('/:id', (req, res) => {
 
 //Add Post
 router.post('/', (req, res) => {
-    res.status(200).json({message: "Adding Post"})
+    const {title, content } = req.body;
+    let newPostId = 7;
+    const newPost = { id: newPostId, title, content}
+    if (title && content){
+        posts.push(newPost)
+        newPostId++
+        res.status(200).json({message: "Adding Post", post: newPost})
+    } else if (!title || !content) {
+        res.status(404).json({message: "Title and Contenet required"})
+    } else {
+        res.status(500).json({ message: 'Error adding the post'})
+    }
 });
 
 
