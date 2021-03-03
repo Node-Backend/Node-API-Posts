@@ -9,7 +9,7 @@ ________________
 | ------------- |:---------------------------------------:|:-----------------------:|
 |     GET       |   http://localhost:5000                 | Gets the server message |
 |     GET       |   http://localhost:5000/api/posts       | Gets All post           |
-|     GET       |   http://localhost:5000/postById/id     | Gets post by id         |
-|     POST      |   http://localhost:5000/posts           | Adds a new post         |
-|     PUT       |   http://localhost:5000/posts/id        | Updates post            |
-|     DELETE    |   http://localhost:5000/posts/id        | Deletes post            |
+|     GET       |   http://localhost:5000/api/posts/id     | Gets post by id         |
+|     POST      |   http://localhost:5000/api/posts           | Adds a new post         |
+|     PUT       |   http://localhost:5000/api/posts/id        | Updates post            |
+|     DELETE    |   http://localhost:5000/api/posts/id        | Deletes post            |
